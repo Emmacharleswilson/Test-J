@@ -5,9 +5,10 @@
 const {
     game,
     newGame,
-    showScore
+    showScore,
+    addTurn,
+    lightsOn
 } = require("../game");
-
 
 beforeAll(() => {
     let fs = require("fs");
@@ -46,13 +47,13 @@ describe("newGame works correctly", () => {
     test("should set game score to zero", () => {
         expect(game.score).toEqual(0);
     });
-    test("should clear the computer sequence array", () => {
-        expect(game.currentGame.length).toBe(0);
+    test("should display 0 for the element with id of score", () => {
+        expect(document.getElementById("score").innerText).toEqual(0);
     });
     test("should clear the player moves array", () => {
         expect(game.playerMoves.length).toBe(0);
     });
-    test("should display 0 for the element with id of score", () => {
-        expect(document.getElementById("score").innerText).toEqual(0);
-    })
+    test("should add one move to the computer's game array", () => {
+        expect(game.currentGame.length).toBe(1);
+    });
 });
